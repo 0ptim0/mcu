@@ -11,7 +11,7 @@ if (MCU_MAP_CREATION STREQUAL "ON")
     set(LINK_MAP_CREATION_FLAG "-Wl,-Map=${PROJECT_BINARY_DIR}/${PROJ_NAME}.map")
 endif ()
 
-set(ARCH "cortex-m3")
+set(ARCH "cortex-m4")
 
 SET(CMAKE_C_COMPILER_WORKS   TRUE)
 SET(CMAKE_CXX_COMPILER_WORKS TRUE)
@@ -27,7 +27,7 @@ set(CMAKE_OBJDUMP       ${TOOLCHAIN_BIN_PATH}-objdump)
 set(LINKER_SCRIPT       ${CMAKE_CURRENT_LIST_DIR}/core/${MCU_MODEL}.ld)
 
 string(CONCAT MCU_FLAGS
-    "-mcpu=cortex-m3 "
+    "-mcpu=cortex-m4 "
     "-mlittle-endian "
     "-mfloat-abi=soft "
     "-mthumb "
@@ -75,6 +75,6 @@ set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG ${COMPILER_FLAGS}")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG ${COMPILER_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "${LINKER_FLAGS} -O3")
 
-if (MCU_MODEL STREQUAL "stm32f103c8t6")
-    add_definitions(-DSTM32F103xB)
+if (MCU_MODEL STREQUAL "stm32f401re")
+    add_definitions(-DSTM32F401xE)
 endif()
